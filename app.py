@@ -1,6 +1,6 @@
 import streamlit as st
-from PIL import Image
 import os
+import base64
 
 # Set page configuration
 st.set_page_config(
@@ -47,14 +47,12 @@ st.markdown('<div class="profile-container">', unsafe_allow_html=True)
 # Title
 st.title("Welcome to My Page")
 
-# Use the specific image path provided
-image_path = "/Users/mugilarasan/Pictures/Backup Photos/iCloud Photos/9238e2bf-742d-4c9e-abd7-7b7fc0febb5f.jpg"
-if os.path.exists(image_path):
-    image = Image.open(image_path)
-    st.image(image, width=250, output_format="JPEG", caption="", use_column_width=False)
-else:
-    st.error(f"Image not found at: {image_path}")
-    st.markdown("### Image Not Found")
+# For Streamlit Cloud, we need to use a publicly accessible image
+# Since we can't access local files on the server, let's use a placeholder image
+st.image("https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=250", width=250, caption="Profile Image")
+
+# Note: In local development, you could use your local image path:
+# "/Users/mugilarasan/Pictures/Backup Photos/iCloud Photos/9238e2bf-742d-4c9e-abd7-7b7fc0febb5f.jpg"
 
 st.markdown('</div>', unsafe_allow_html=True)
 
